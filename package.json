@@ -1,0 +1,34 @@
+{
+  "name": "workers-react-router-typescript",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "react-router dev --host 127.0.0.1",
+    "build": "react-router build",
+    "cf-typegen": "wrangler types && react-router typegen",
+    "check": "npm run cf-typegen && tsc --noEmit && npm run build && wrangler deploy --dry-run",
+    "bundle": "wrangler deploy --dry-run --outdir dist/worker-bundle",
+    "start": "wrangler dev",
+    "preview": "npm run build && vite preview --host 127.0.0.1",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-router": "8.4.0",
+    "isbot": "5.2.2"
+  },
+  "devDependencies": {
+    "@cloudflare/vite-plugin": "1.62.5",
+    "@react-router/dev": "8.4.0",
+    "@types/node": "24.7.0",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "typescript": "6.0.3",
+    "vite": "8.3.2",
+    "wrangler": "4.147.0"
+  }
+}
